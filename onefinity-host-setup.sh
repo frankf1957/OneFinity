@@ -126,29 +126,11 @@ Step 5. Create SSH public keys.
 SSH will be configured to prevent login by password, so you will need an SSH public
 key to access this host.
 
-I will generate an SSH keypair for the onefinity user account and print the private
-key on the terminal. You will need to copy this key and configure your SSH client
-to use it when logging into this host. 
-
-You can copy the private key to your clipboard, and paste it in a notepad.
-This is a private key, you should treat it like a password. Keep it a secret. 
-
-When prompted to enter a passphrase for the private key, just press enter.
-
 EOF
 
-    # add SSH public keys for the ${ONEFINITY_USERNAME} user account
     local _user=${ONEFINITY_USERNAME}
     local _user_home=$(getent passwd ${_user} | awk -F':' '{print $6}')
 
-    sudo -u ${_user} mkdir -p ${_user_home}/.ssh
-    sudo -u ${_user} ssh-keygen -q -t ed25519 -f ${_user_home}/.ssh/id_ed25519
-
-    echo This is your private key, copy the text to your clipboard and save in a notepad.
-
-    echo
-    cat ${_user_home}/.ssh/id_ed25519
-    echo
 }
 
 
@@ -239,6 +221,7 @@ create_sudo_rules;
 
 # Create SSH public keys
 # SSH will be configured to prevent login by passord, so you will need an SSH public key to access this host.
+
 create_ssh_public_keys;
 
 # Install UFW (uncomplicated firewall) to secure your VPS server.
