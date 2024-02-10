@@ -18,6 +18,7 @@ ONEFINITY_USERNAME="onefinity"
 
 function print_welcome_message {
     cat <<'EOF'
+
 Welcome to the initial host setup for OneFinity validator nodes.
 --------------------------------------------------------------------------------
 
@@ -39,6 +40,7 @@ EOF
 
 function update_system_os {
     cat <<'EOF'
+
 Step 1. Updating your system with the latest patches available from Ubuntu.
 --------------------------------------------------------------------------------
 
@@ -69,8 +71,9 @@ EOF
 }
 
 
-function set_timezone_utc {
+function set_timezone_utc  {
     cat <<EOF
+
 Step 2. Setting the timezone to UTC.
 --------------------------------------------------------------------------------
 
@@ -84,6 +87,7 @@ EOF
 
 function create_user_accounts {
     cat <<'EOF'
+
 Step 3. Create the ${ONEFINITY_USERNAME} user account and set the password
 --------------------------------------------------------------------------------
 
@@ -104,6 +108,7 @@ EOF
 
 function create_sudo_rules {
     cat <<'EOF'
+
 Step 4. Create rules to allow the ${ONEFINITY_USERNAME} user account to use the sudo command
 --------------------------------------------------------------------------------
 
@@ -136,6 +141,7 @@ EOF
 
 function install_configure_ufw {
     cat <<'EOF'
+
 Step 6. Install UFW (uncomplicated firewall) to secure your VPS server.
 --------------------------------------------------------------------------------
 
@@ -172,6 +178,7 @@ EOF
 
 function configure_strict_ssh {
     cat <<'EOF'
+
 Step 7. Update the SSH configuration to make it secure.
 --------------------------------------------------------------------------------
 
@@ -203,8 +210,10 @@ EOF
 
 ## Initial host setup for OneFinity validator nodes.
 
-# Print a welcome messae and allow the user to continue or cancel.
+# Print a welcome message and allow the user to continue or cancel.
 print_welcome_message;
+exit. 
+
 
 # Update the system from the Ubuntu package repository.
 update_system_os;
