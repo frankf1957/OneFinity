@@ -48,6 +48,7 @@ If you are prompted to respond y/n during the process, it is safe to type y and 
 enter to continue. Expect this phase to take a few minutes and generate a lot of lines of output. 
 
 Press <enter> when you are ready to begin ... or just wait 30 seconds and I will start by myself ...
+
 EOF
 
     read -t 30 response;
@@ -108,6 +109,7 @@ Step 4. Create rules to allow the ${ONEFINITY_USERNAME} user account to use the 
 
 Sudo access is required by mx-chain-scripts when installing and managing nodes
 on the MultiversX blockchain network.
+
 EOF
 
     # getting the group name, just in case it does not match the username
@@ -194,6 +196,7 @@ Step 7. Update the SSH configuration to make it secure.
 We do this by preventing root user login over SSH.
 The root user will only be allowed to login from the VPS providers console. 
 We prevent login by password thereby forcing login by SSH private key.
+
 EOF
 
     # backup /etc/ssh/sshd_config before changes 
