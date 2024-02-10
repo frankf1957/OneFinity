@@ -88,10 +88,10 @@ EOF
 function create_user_accounts {
     cat <<'EOF'
 
-Step 3. Create the ${ONEFINITY_USERNAME} user account and set the password
+Step 3. Create the onefinity user account and set the password
 --------------------------------------------------------------------------------
 
-We will now create the ${ONEFINITY_USERNAME} user account.
+We will now create the onefinity user account.
 
 You will be prompted to set a passord, and will need to type that password 2 times.
 Please choose a password of at least 8 characters. Use at least one numeral and at 
@@ -109,7 +109,7 @@ EOF
 function create_sudo_rules {
     cat <<'EOF'
 
-Step 4. Create rules to allow the ${ONEFINITY_USERNAME} user account to use the sudo command
+Step 4. Create rules to allow the onefinity user account to use the sudo command
 --------------------------------------------------------------------------------
 
 Sudo access is required by mx-chain-scripts when installing and managing nodes
@@ -148,7 +148,12 @@ Step 6. Install UFW (uncomplicated firewall) to secure your VPS server.
 The firewall will be installed, configured, and started.
 The firewall will only allow inbound traffic on tcp/22 (SSH), and tcp/37373-38383 (MultiversX nodes).
 
+If you see this message: "Command may disrupt existing ssh connections. Proceed with operation"
+it is safe to type y and press enter to continue.
+
 EOF
+
+    read -t 30 response;
 
     # install UFW firewall
     sudo apt -y install ufw
