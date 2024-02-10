@@ -212,8 +212,6 @@ EOF
 
 # Print a welcome message and allow the user to continue or cancel.
 print_welcome_message;
-exit. 
-
 
 # Update the system from the Ubuntu package repository.
 update_system_os;
