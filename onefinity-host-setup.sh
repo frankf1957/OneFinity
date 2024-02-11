@@ -49,7 +49,7 @@ Let's start by updating your system with the latest patches available from Ubunt
 If you are prompted to respond y/n during the process, it is safe to type y and press 
 enter to continue. 
 
-There may be some colourful screens waiting for a reaponse, just press enter to continue. 
+There may be some colourful screens waiting for a response, just press enter to continue. 
 
 Expect this phase to take a few minutes and generate a lot of lines of output. 
 
@@ -150,6 +150,10 @@ EOF
     
     sudo -u ${_user} mkdir -p ${_user_home}/.ssh
     sudo -u ${_user} echo "${_ssh_public_key}" >> ${_user_home}/.ssh/authorized_hosts
+
+    sudo chown -R "$(id -u):$(id -g)" ${_user_home}/.ssh
+    sudo chmod 700 ${_user_home}/.ssh
+    sudo chmod 600 ${_user_home}/.ssh/authorized_hosts
 }
 
 
@@ -167,7 +171,7 @@ it is safe to type y and press enter to continue.
 
 EOF
 
-    read -t 30 response;
+    read -t 30 -p "press <enter> when ready to configure the firewall ... " response;
 
     # install UFW firewall
     sudo apt -y install ufw
@@ -218,12 +222,13 @@ EOF
 Protocol 2
 
 # Prevent root user from login
-PermitRootLogin no
+# PermitRootLogin no
 
 # Disable passsword authentication
 PasswordAuthentication no
 PermitEmptyPasswords no
 EOF
+
 }
 
 
