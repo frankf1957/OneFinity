@@ -122,8 +122,8 @@ on the MultiversX blockchain network.
 EOF
 
     # getting the group name, just in case it does not match the username
-    local _groupname="$(id -gn ${ONEFINITY_USERNAME})"
-    sudo echo "%${_groupname} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${ONEFINITY_USERNAME}-ALL-NOPASSWD
+    local _user=${ONEFINITY_USERNAME}
+    sudo echo "${_user} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${_user}-ALL-NOPASSWD
 }
 
 
