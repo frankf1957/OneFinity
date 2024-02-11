@@ -1,6 +1,6 @@
 # Scripts and Tools for OneFinity Validators
 
-Here can find scripts and tools to facilitate working with OneFinity nodes on the MultiversX blockchain network. 
+Here we will find scripts and tools to facilitate working with OneFinity nodes on the MultiversX blockchain network. 
 
 ## Getting started
 
@@ -31,9 +31,7 @@ What you need to get started.
 
 ### OneFinity node VPS node setup
 
-So you have completed the 3 requirements above and you are ready to get started.  
-
-Now you get to enjoy the goodnes of automation. 
+When you have completed the 3 requirements above you will be ready to get started.  
 
 The OneFinity host setup script will prepare the new VPS host by completing a few adminstration tasks for you.
 
@@ -54,9 +52,9 @@ Copy the following line. Then paste it to the terminal window by pressing \<shif
 curl -sk -O https://raw.githubusercontent.com/frankf1957/onefinity/main/onefinity-host-setup.sh && bash onefinity-host-setup.sh
 ~~~
 
-When the script is finished, it will prompt you to restart the host for changes to take effect.
+When the script is finished it will prompt you to restart the host for changes to take effect.
 
-Press enter and the remote system will be restarted, and your SSH session will be disconnected. 
+Press enter and the remote system will be restarted and your SSH session will be disconnected. 
 
 Wait a minute or two, then you can login as the onefinity user, and continue by installing the MultiversX node. 
 

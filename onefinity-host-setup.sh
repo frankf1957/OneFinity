@@ -327,5 +327,4 @@ configure_strict_ssh;
 # The system should now be restarted for changes to take effect.
 print_reboot_message;
 
-
 exit;
