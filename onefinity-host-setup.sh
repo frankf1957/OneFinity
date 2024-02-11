@@ -47,9 +47,13 @@ Step 1. Updating your system with the latest patches available from Ubuntu.
 Let's start by updating your system with the latest patches available from Ubuntu.
 
 If you are prompted to respond y/n during the process, it is safe to type y and press 
-enter to continue. Expect this phase to take a few minutes and generate a lot of lines of output. 
+enter to continue. 
 
-Press <enter> when you are ready to begin ... or just wait 30 seconds and I will start by myself ...
+There may be some colourful screens waiting for a reaponse, just press enter to continue. 
+
+Expect this phase to take a few minutes and generate a lot of lines of output. 
+
+Press <enter> when you are ready to begin ... or wait 30 seconds and I will start by myself ...
 
 EOF
 
@@ -123,19 +127,29 @@ EOF
 }
 
 
-function create_ssh_public_keys {
+function update_ssh_public_keys {
     cat <<'EOF'
-Step 5. Create SSH public keys.
+Step 5. Add an SSH public key for the onefinity user.
 --------------------------------------------------------------------------------
 
 SSH will be configured to prevent login by password, so you will need an SSH public
 key to access this host.
 
+When prompted, paste your SSH PUBLIC KEY, and I will add it to the list of authorized
+keys for the onefinity user.
+
 EOF
 
     local _user=${ONEFINITY_USERNAME}
     local _user_home=$(getent passwd ${_user} | awk -F':' '{print $6}')
+    local _ssh_public_key=""
 
+    echo "Paste your SSH public key:"
+    read _ssh_public_key
+
+    
+    sudo -u ${_user} mkdir -p ${_user_home}/.ssh
+    sudo -u ${_user} echo "${_ssh_public_key}" >> ${_user_home}/.ssh/authorized_hosts
 }
 
 
@@ -231,10 +245,9 @@ create_user_accounts;
 # Create rules to allow the onefinity user account to use the sudo command. 
 create_sudo_rules;
 
-# Create SSH public keys
+# Update SSH public keys
 # SSH will be configured to prevent login by passord, so you will need an SSH public key to access this host.
-
-create_ssh_public_keys;
+update_ssh_public_keys;
 
 # Install UFW (uncomplicated firewall) to secure your VPS server.
 # The firewall will configured to only allow inbound traffic on tcp/22 (SSH), and tcp/37373-38383 (MultiversX nodes). 
