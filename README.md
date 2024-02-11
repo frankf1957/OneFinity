@@ -61,23 +61,21 @@ Wait a minute or two, then you can login as the onefinity user, and continue by 
 
 ## Install and configure host monitoring
 
-One popular and easy solution for host monitoring is available from [Netdata.cloud](https://www.netdata.cloud/).
-NetData provides an easy to install monitoring agent. 
-The agent collects thousands of server metrics and can be configured to send alerts to many popular messaging systems.
-I have mine configured to send alerts to Telegram.
-You can connect to the monitoring agent on your VPS at port 19999, or login to [Netdata.cloud](https://www.netdata.cloud/)
-using your Google or GitHub user and view your hosts in the Netdata Cloud dashboard (adding them to the dashboard board is a simple 1 minute operation).
+Netdata is a free and open-source monitoring agent that collects thousands of hardware and software metrics from any physical or virtual system (Netdata calls them nodes). These metrics are organized in an easy-to-use and navigate interface.
 
-View the [NetData Dashboard live-demo](https://app.netdata.cloud/spaces/netdata-demo/rooms/all-nodes/overview) for a preview of what you get when you install this amazing monitoring agent.
+You can connect to the monitoring agent on your physical or virtual system at port 19999, or login to [Netdata.cloud](https://www.netdata.cloud/)
+Together with [Netdata.cloud](https://www.netdata.cloud/), you can monitor your entire infrastructure in real time and troubleshoot problems that threaten the health of your nodes.
+
+View the [Netdata Dashboard live-demo](https://app.netdata.cloud/spaces/netdata-demo/rooms/all-nodes/overview) for a preview of what you get when you install this amazing monitoring agent.
 
 
-### Get started with NetData
+### Get started with Netdata
 
 Install the open-source monitoring agent on physical/virtual systems running most Linux distributions (Ubuntu, Debian, CentOS, and more), container platforms (Kubernetes clusters, Docker), and many other operating systems, with no sudo required.
 
 You can read about installation here,
 [Install Netdata with kickstart.sh](https://learn.netdata.cloud/docs/installing/one-line-installer-for-all-linux-systems)
-or run the kickstart installer from the command line by pasting the following one-liner in your terminal window by pressing \<shift+insert\>, then press \<enter\> to start the process.
+or run the kickstart installer from the command line by pasting the following one-liner in your terminal window then press \<enter\> to start the process.
 
 ~~~
 curl https://get.netdata.cloud/kickstart.sh > /tmp/netdata-kickstart.sh && sh /tmp/netdata-kickstart.sh --disable-telemetry
