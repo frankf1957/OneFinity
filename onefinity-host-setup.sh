@@ -144,11 +144,14 @@ EOF
 
 Sudo rules for the onefinity user are configured.
 
+EOF
+
 }
 
 
 function update_ssh_public_keys {
     cat <<'EOF'
+
 Step 5. Add an SSH public key for the onefinity user.
 --------------------------------------------------------------------------------
 
