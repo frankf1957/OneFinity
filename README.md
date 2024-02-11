@@ -12,20 +12,22 @@ What you need to get started.
 
 1. You will need an SSH client on the computer you will be using to install and manage your nodes. 
 
-For windows users the recommended SSH client is MobaXeterm. 
-You should download and install the 
-[MobaXterm Home Edition](https://mobaxterm.mobatek.net/download-home-edition.html). 
-To download, click the green button labeled --MobaXterm Home Edition (Installer edition)--.
+    For windows users the recommended SSH client is MobaXeterm. 
+    You can download and install the 
+    [MobaXterm Home Edition](https://mobaxterm.mobatek.net/download-home-edition.html). 
+    To download, click the green button labeled _MobaXterm Home Edition (Installer edition)_.
 
-For Mac users, you can use the builtin SSH client available in the Terminal app. 
+    For Mac users, you can use the builtin SSH client available in the Terminal app. 
 
-1. You will need to use your SSH client to generate an SSH keypair.
+2. You will need to use your SSH client to generate an SSH keypair.
 
-For Windows users. ONce you have installed MobaXterm ....
+    For Windows users. [ instructions to be provided soon .... ]
 
-1. You will need a VPS hosted by a VPS provider. 
+    For Mac users. [ instructions to be provided soon .... ]
 
-See the requirements in the OneFinity validators Telegram chat. 
+3. You will need a VPS hosted by a VPS provider. 
+
+    See the requirements in the OneFinity validators Telegram chat. 
 
 ### OneFinity node VPS node setup
 
@@ -37,7 +39,7 @@ The OneFinity host setup script will prepare the new VPS host by completing a fe
 
 1. Update the system from the Ubuntu package repository.
 1. Set the timezone to UTC.
-1. Create a user account named onefinity, and prompt you tose the password.
+1. Create a user account named onefinity, and prompt you to set the password.
 1. Create rules to allow the onefinity user account to use the sudo command.
 1. Add your SSH public key to the authorized_keys of the onefinity user.
 1. Install and configure UFW (uncomplicated firewall) to secure your VPS host.
@@ -46,7 +48,7 @@ The OneFinity host setup script will prepare the new VPS host by completing a fe
 
 To run the script, login to your VPS host from your SSH client.
 
-Copy the following line and paste it to the terminal window bt pressing <shift+insert>, then press <enter> to start the process. 
+Copy the following line. Then paste it to the terminal window by pressing \<shift+insert\>, then press \<enter\> to start the process. 
 
 ~~~
 curl -sk -O https://raw.githubusercontent.com/frankf1957/onefinity/main/onefinity-host-setup.sh && bash onefinity-host-setup.sh
