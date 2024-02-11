@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# host_setup.sh
+# onefinity-host-setup.sh
 #
 # Initial host setup for OneFinity validator nodes
 #
