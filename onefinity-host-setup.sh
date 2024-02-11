@@ -173,7 +173,7 @@ EOF
     sudo -u ${_user} mkdir -p ${_user_home}/.ssh
     sudo -u ${_user} echo "${_ssh_public_key}" >> ${_user_home}/.ssh/authorized_keys
 
-    sudo chown -R "$(id -u):$(id -g)" ${_user_home}/.ssh
+    sudo chown -R "$(id -u ${_user}):$(id -g ${_user})" ${_user_home}/.ssh
     sudo chmod 700 ${_user_home}/.ssh
     sudo chmod 600 ${_user_home}/.ssh/authorized_keys
 
