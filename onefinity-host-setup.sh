@@ -72,6 +72,7 @@ Your system has been updated with latest patches available from Ubuntu.
 We'll continue with the next step now.
 
 EOF
+
 }
 
 
@@ -86,6 +87,13 @@ to their local timezone.
 
 EOF
     sudo timedatectl set-timezone UTC
+
+    cat <<'EOF'
+
+The timezone is set to UTC.
+
+EOF
+
 }
 
 
@@ -107,6 +115,13 @@ EOF
     getent passwd ${ONEFINITY_USERNAME} && true || sudo useradd -c "OneFinity Validator" -s /bin/bash -m ${ONEFINITY_USERNAME}
     sudo usermod -aG sudo ${ONEFINITY_USERNAME}
     sudo passwd ${ONEFINITY_USERNAME}
+
+    cat <<'EOF'
+
+The onefinity user account and password are created.
+
+EOF
+
 }
 
 
@@ -124,6 +139,11 @@ EOF
     # getting the group name, just in case it does not match the username
     local _user=${ONEFINITY_USERNAME}
     sudo echo "${_user} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${_user}-ALL-NOPASSWD
+
+    cat <<'EOF'
+
+Sudo rules for the onefinity user are configured.
+
 }
 
 
@@ -147,13 +167,19 @@ EOF
     echo "Paste your SSH public key:"
     read _ssh_public_key
 
-    
     sudo -u ${_user} mkdir -p ${_user_home}/.ssh
-    sudo -u ${_user} echo "${_ssh_public_key}" >> ${_user_home}/.ssh/authorized_hosts
+    sudo -u ${_user} echo "${_ssh_public_key}" >> ${_user_home}/.ssh/authorized_keys
 
     sudo chown -R "$(id -u):$(id -g)" ${_user_home}/.ssh
     sudo chmod 700 ${_user_home}/.ssh
-    sudo chmod 600 ${_user_home}/.ssh/authorized_hosts
+    sudo chmod 600 ${_user_home}/.ssh/authorized_keys
+
+    cat <<'EOF'
+
+An SSH public key has been added for the onefinity user.
+
+EOF
+
 }
 
 
@@ -196,6 +222,13 @@ EOF
 
     sudo ufw logging on
     sudo ufw enable
+
+    cat <<'EOF'
+
+The firewall is configured. 
+
+EOF
+
 }
 
 
@@ -229,6 +262,31 @@ PasswordAuthentication no
 PermitEmptyPasswords no
 EOF
 
+    cat <<'EOF'
+
+Your SSH configuration has been secured. 
+
+EOF
+
+}
+
+
+function print_reboot_message {
+    cat <<'EOF'
+
+Host setup for OneFinity validator nodes is complete.
+--------------------------------------------------------------------------------
+
+Host setup for OneFinity validator nodes is complete.
+
+The system should now be restarted for changes to take effect.
+
+Press <enter> to restart now, or <control+c> to cancel. 
+
+EOF
+
+    read -t 120 response;
+    sudo reboot
 }
 
 
@@ -262,5 +320,9 @@ install_configure_ufw;
 # We do this by preventing root user login, preventing login by password so forcing login by SSH private key.
 # We need to generatate the SSH private key first, otherwise the user will be locked-out of their host.
 configure_strict_ssh;
+
+# The system should now be restarted for changes to take effect.
+print_reboot_message;
+
 
 exit;
