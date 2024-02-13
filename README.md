@@ -1,19 +1,19 @@
 # Scripts and Tools for OneFinity Validators
 
-Here we will find scripts and tools to facilitate working with OneFinity nodes on the MultiversX blockchain network. 
+Here we will find scripts and tools to facilitate working with OneFinity nodes on the MultiversX blockchain network.
 
 ## Getting started
 
 These instructions are here to help get you up and running a OneFinity validator node on the MultiversX blockchain network.
 
-1. You will need an SSH client on the computer you will be using to install and manage your nodes. 
+1. You will need an SSH client on the computer you will be using to install and manage your nodes.
 
-    For windows users the recommended SSH client is MobaXeterm. 
+    For windows users the recommended SSH client is MobaXeterm.
     You can download and install the 
     [MobaXterm Home Edition](https://mobaxterm.mobatek.net/download-home-edition.html). 
     To download, click the green button labeled _MobaXterm Home Edition (Installer edition)_.
 
-    For Mac users, you can use the builtin SSH client available in the Terminal app. 
+    For Mac users, you can use the builtin SSH client available in the Terminal app.
 
 1. You will need to use your SSH client to generate an SSH keypair.
 
@@ -21,23 +21,21 @@ These instructions are here to help get you up and running a OneFinity validator
 
     For Mac users. [ instructions to be provided soon .... ]
 
-1. You will need a VPS hosted by a VPS provider. 
+1. You will need a VPS hosted by a VPS provider.
 
-    See the requirements in the OneFinity validators Telegram chat. 
+    See the requirements in the OneFinity validators Telegram chat.
 
-1. Optional for now, but you will need to create a GitHub user account and create a personal access token (PAT). 
+1. Create a GitHub user account and personal access token (PAT).
 
-    GitHub is where the source code for MultiversX nodes is hosted. 
-    GitHub has implemented IP connection throttling for non GitHub users pulling from GitHub repos. 
-    This can cause issues pulling down updates especially for validators when updating their nodes running on multiple hosts. 
-    By creating a GitHub user account and a personal access token we can be assured that we do not get rate limited when updating our nodes. 
-    Be sure to record your personal access token in your notes because it will be shown only once and you will need it later when you are ready to download and install your MultiversX node. 
+    Non GitHub users pulling from GitHub can experience rate limiting especially when updating nodes running on multiple hosts.
+    By creating a GitHub personal access token, validators can be assured that they do not get rate limited.
+    Be sure to record your personal access token in your notes because it will be shown only once and you will need it later when you are ready to build and install your MultiversX node(s).
 
     - Signup here to [create your GitHub account](https://github.com/signup)
 
     - Learn about [personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#about-personal-access-tokens)
 
-    - Create a [fine-grained personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+    - Create a fine-grained [personal access token here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
 ## New VPS host setup
 
@@ -52,9 +50,9 @@ The OneFinity host setup script will prepare the new VPS host by completing a fe
 1. Install and configure UFW (uncomplicated firewall) to secure your VPS host.
 1. Prompt you to restart the system for changes to take effect.
 
-To run the script, login to your VPS host from your SSH client.
+To run the script, login to your VPS host from your SSH client. (follow instructions in the email you receive from your VPS provider when you create your VPS host)
 
-Copy the following line. Then paste it to the terminal window by pressing \<shift+insert\>, then press \<enter\> to start the process. 
+Copy the following line then paste it to the terminal window, then press \<enter\> to start the process.
 
 ~~~
 curl -sk -O https://raw.githubusercontent.com/frankf1957/onefinity/main/onefinity-host-setup.sh && bash onefinity-host-setup.sh
@@ -62,9 +60,9 @@ curl -sk -O https://raw.githubusercontent.com/frankf1957/onefinity/main/onefinit
 
 When the script is finished it will prompt you to restart the host for changes to take effect.
 
-Press enter and the remote system will be restarted and your SSH session will be disconnected. 
+Press enter and the remote system will be restarted and your SSH session will be disconnected.
 
-Wait a minute or two, then you can login as the onefinity user, and continue by installing the MultiversX node. 
+Wait a minute or two, then login as the onefinity user, and continue by installing host monitoring.
 
 ## Install and configure host monitoring
 
