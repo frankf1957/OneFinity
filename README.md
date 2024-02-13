@@ -33,11 +33,11 @@ These instructions are here to help get you up and running a OneFinity validator
     By creating a GitHub user account and a personal access token we can be assured that we do not get rate limited when updating our nodes. 
     Be sure to record your personal access token in your notes because it will be shown only once and you will need it later when you are ready to download and install your MultiversX node. 
 
-    Signup here and [create your GitHub account.](https://github.com/signup)
-    Learn about [personal access tokens ] 
-    (https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#about-personal-access-tokens)
-    Create a [fine-grained personal access token] 
-    (https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+    - Signup here to [create your GitHub account](https://github.com/signup)
+
+    - Learn about [personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#about-personal-access-tokens)
+
+    - Create a [fine-grained personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
 ## New VPS host setup
 
