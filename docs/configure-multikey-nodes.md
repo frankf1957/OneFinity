@@ -53,7 +53,7 @@ $ mv validatorKey.pem allValidatorsKeys.pem
 ~~~
 
 
-- **If you have staked a node**, the `validatorKey.pem` was renamed to `allValidatorsKeys.pem`, so copy the contents of  `validatorKey.pem`  to the end of `allValidatorsKeys.pem`.
+- **If you have staked a node**, the `validatorKey.pem` was renamed to `allValidatorsKeys.pem` in a previous step, so copy the contents of  `validatorKey.pem`  to the end of `allValidatorsKeys.pem`.
 
 ~~~
 $ cat validatorKey.pem >> allValidatorsKeys.pem
@@ -62,17 +62,17 @@ $ cat validatorKey.pem >> allValidatorsKeys.pem
 The `allValidatorsKeys.pem` file is ready. 
 
 
-## Adding the BLS public keys to prefs.toml.
+## Add the BLS public keys to prefs.toml.
 
 The BLS public key is the 192 hex character string in the BEGIN and END lines found in files containing validator keys. 
 
-- Run the following command, to extract each BLS public key from `allValidatorsKeys.pem` and store the result in a file named `BLS_KEYS.txt`. We will then copy + paste the values from `BLS_KEYS.txt` to the appropriate section of prefs.toml.
+- Run the following command to extract each BLS public key from `allValidatorsKeys.pem` and store the result in a file named `BLS_KEYS.txt`. 
 
 ~~~
 $ cat allValidatorsKeys.pem | awk -F'[ -]*' '/BEGIN/{print $(NF-1)}' > BLS_KEYS.txt
 ~~~
 
-When we paste the list of BLS keys in `prefs.toml`, the strings will need to conform to the TOML specification. The strings need to be surrounded by double quotes, indented by 6 spaces. Since we are making a list, each element in the list needs to end with a comma. 
+When we paste the list of BLS keys in `prefs.toml`, the strings will need to conform to the TOML specification. The strings need to be surrounded by double quotes, indented by 6 spaces. Each item in the list needs to end with a comma, except the last one. 
 
 - Run the following command to quote the keys and format them. 
 
@@ -146,11 +146,14 @@ $ cat BLS_KEYS.txt
    ]
 ~~~
 
-Refer to the example above. When configured for Multikey, node names are generated using the string set in NodeName with a numeric suffix added. In this example, there are 16 entries in the BLSKeys list, which will result in 16 nodes named pale-blue-00 .. pale-blue-15. 
+Refer to the example above. When configured for Multikey, node names are generated using the string set in NodeName with a numeric suffix added. In this example there are 16 entries in the BLSKeys list, which will result in 16 nodes named pale-blue-00 .. pale-blue-15. 
 
 This setting is different and separate from the NodeDisplayName setting near the top of prefs.toml. NodeDisplayName will be the display name of your observer node.  
 
-The series of names generated using the NodeName prefix will initially be visible as observers in the Explorer. As you stake nodes using the BLS keys from the 
+The series of names generated using the NodeName prefix will initially be visible as observers in the Explorer. As you stake nodes using `mxpy validator stake`, the staked nodes will show as Validator. Refreshing the Explorer page may be necessary to see the change. 
+
+The `prefs.toml` file is ready. 
+
 
 ## Restart your node
 
@@ -165,18 +168,18 @@ $ sudo systemctl restart onefinity-validator.service
 - In the explorer, search for your observer node using the value you set in NodeDisplayName of prefs.toml. You should see one observer node in the list. 
 
 - In the explorer, search for your Multikey nodes using the string you set in NodeName of prefs.toml. You should see the list of Multikey nodes where each node name ends with a sequence number. 
-    - if you click All, all nodes in the BLSKeys will be listed
+    - if you click All, all keys present in `prefs.toml` having a corresponding key in `allVlidatorsKeys.pem` will be listed
     - If you click Validators, nodes staked as validators will be listed
-    - if you click Observers, nodes not yet staked will be listed.
+    - if you click Observers, nodes not yet staked will be listed
 
 
 ## Stake individual, or even a group of nodes using mxpy
 
-When Staking validator nodes using `mxpy`,  individual validatorKey.pem files are required. 
+When Staking validator nodes using `mxpy validator stake`,  individual validatorKey.pem files are required. 
 
-When we generated our validator BLS keys using `keygenerator` we added `--no-split` to put all of the keys in a single file named `validatorKey.pem` which we subsequently renamed to `allValidatorsKeys.pem`. 
+When we generated our validator BLS keys using `keygenerator`, we added `--no-split` to put all of the keys in a single file named `validatorKey.pem` which we subsequently renamed to `allValidatorsKeys.pem`. 
 
-We will now split/extract each validator BLS into individual, numbered files named validatorKey-n.pem. 
+We will now split/extract each validator BLS key into individual, numbered files named validatorKey-n.pem. 
 
 ~~~
 $ cat allValidatorsKeys.pem | awk '/BEGIN/,/END/{if (/BEGIN/) {a++}; out="validatorKey-"a".pem"; print>out;}'
@@ -203,7 +206,7 @@ validatorKey-15.pem
 validatorKey-16.pem
 ~~~
 
-In the staking transaction we will submit using `mxpy`, we need to prepare a `validator.json` file which contains a list of validatorKey.pem files. In the document published by the OneFinity team 2025-Jan-23, the sample `validator.json` file is based on staking one validator.  
+In the staking transaction we will submit using `mxpy`, we need to prepare a `validator.json` file which contains a list of validatorKey.pem filenames. 
 
 - To stake an individual BLS key, we can use this sample `validator.json`. 
 
@@ -240,12 +243,12 @@ With a Multikey setup we will have more than one BLS key so we may want to stake
 }
 ~~~
 
-We can use this sample to stake our nodes. Replace the <staking-value> with the amount required based on the total number of nodes that will be staked by this transaction.  
+We can use this sample to stake our nodes. Replace the `<staking-value>` with the amount required based on the total number of nodes that will be staked by this transaction.  
 
 ~~~
 mxpy validator stake \
     --pem=walletKey.pem \
-    --validators-file=validators.json \
+    --validators-file=validator.json \
     --value=<staking-value> \
     --proxy=https://gateway.validators.onefinity.network \
     --gas-limit 25000000 \
