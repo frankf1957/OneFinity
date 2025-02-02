@@ -1,6 +1,6 @@
 # Scripts to Facilitate Staking, Unstaking and Unbonding
 
-Here we will find scripts and tools to facilitate working with OneFinity nodes on the MultiversX blockchain network.
+Here we will find scripts and tools to facilitate working with OneFinity nodes on the OneFinity blockchain network.
 
 
 ## Stake nodes
