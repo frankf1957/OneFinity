@@ -8,7 +8,7 @@
 
 ## Getting started
 
-These instructions are here to help get you up and running a OneFinity validator node on the MultiversX blockchain network.
+These instructions are here to help get you up and running a OneFinity validator node. 
 
 1. You will need an SSH client on the computer you will be using to install and manage your nodes.
 
