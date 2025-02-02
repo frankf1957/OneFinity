@@ -1,0 +1,16 @@
+{
+  "validators": [
+    {
+      "pemFile": "validatorKey-1.pem"
+    },
+    {
+      "pemFile": "validatorKey-2.pem"
+    },
+    {
+      "pemFile": "validatorKey-3.pem"
+    },
+    {
+      "pemFile": "validatorKey-4.pem"
+    }
+  ]
+}
