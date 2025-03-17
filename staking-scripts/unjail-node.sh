@@ -12,15 +12,21 @@ BLS_KEYS=(
 )
 
 
+PROXY="https://gateway.validators.onefinity.network"
+
+NODES=1
+VALUE=$(echo "2.5 * $NODES * 10^18 /1" | bc)
+GAS_LIMIT=$(echo "25 * 10^6 * $NODES /1" | bc)
+
+
 function do_unjail_nodes {
     KEYS="${1}"
-    PROXY="https://gateway.validators.onefinity.network"
-    GAS_LIMIT=25000000
 
     mxpy validator unjail \
         --pem=walletKey.pem \
         --nodes-public-keys="$KEYS" \
         --proxy=${PROXY} \
+        --value $VALUE \
         --gas-limit=${GAS_LIMIT} \
         --recall-nonce \
         --send
